@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Dados do Dataset: {{ dataset.nome }}</h2>
+  <a href="{% url 'adicionar_dado' dataset.pk %}" class="btn btn-primary btn-sm">Adicionar dado</a>
+  <a href="{% url 'exportar_csv_view' dataset.id %}" class="btn btn-success btn-sm">Exportar CSV</a>
+  <a href="{% url 'exportar_json_view' dataset.id %}" class="btn btn-warning btn-sm">Exportar JSON</a>
+  {% if dados %}
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>Chave</th>
+          <th>Valor</th>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Email</th>
+          <th>Sexo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dado in dados %}
+        <td>
+            <a href="{% url 'editar_dado' pk=dado.pk %}" class="btn btn-sm btn-primary">Editar</a>
+            <a href="{% url 'remover_dado' pk=dado.pk %}" class="btn btn-sm btn-danger"
+               onclick="return confirm('Tem certeza que deseja remover este dado?');">Remover</a>
+        </td>
+          
+          <tr>
+            <td>{{ dado.chave }}</td>
+            <td>{{ dado.valor }}</td>
+            <td>{{ dado.nome }}</td>
+            <td>{{ dado.idade }}</td>
+            <td>{{ dado.email }}</td>
+            <td>{{ dado.sexo }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Este dataset ainda não possui dados.</p>
+  {% endif %}
+
+  <a href="{% url 'listar_datasets' %}" class="btn btn-secondary mt-3">Voltar</a>
+</div>
+{% endblock %}

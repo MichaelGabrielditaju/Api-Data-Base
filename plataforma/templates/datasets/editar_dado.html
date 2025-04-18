@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>Editar Dado</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="chave" class="form-label">Chave:</label>
+        <input type="text" class="form-control" id="chave" name="chave" value="{{ dado.chave }}">
+      </div>
+      <div class="mb-3">
+        <label for="valor" class="form-label">Valor:</label>
+        <input type="text" class="form-control" id="valor" name="valor" value="{{ dado.valor }}">
+      </div>
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="{{ dado.nome }}">
+      </div>
+      <div class="mb-3">
+        <label for="idade" class="form-label">Idade:</label>
+        <input type="text" class="form-control" id="idade" name="idade" value="{{ dado.idade }}">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="text" class="form-control" id="email" name="email" value="{{ dado.email }}">
+      </div>
+      <div>
+        <label for="sexo" class="form-label">Sexo:</label>
+        <input type="text" class="form-control" id="sexo" name="sexo" value="{{ dado.sexo }}">
+      </div>
+
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+  </div>
+{% endblock %}
