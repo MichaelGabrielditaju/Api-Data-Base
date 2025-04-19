@@ -3,10 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>{% block title %}Plataforma de Datasets{% endblock %}</title>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
   <div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <!-- Botão de Início sempre visível -->
+      <a href="{% url 'listar_datasets' %}" class="btn btn-primary">Início</a>
+
+      <!-- Se o usuário estiver logado -->
+      {% if user.is_authenticated %}
+        <div>
+          <span>Bem-vindo, {{ user.username }}!</span>
+          <a href="{% url 'logout' %}" class="btn btn-danger ms-2">Sair</a>
+        </div>
+      {% else %}
+        <!-- Se NÃO estiver logado e NÃO estiver na página de login -->
+        {% if request.resolver_match.view_name != 'login' %}
+          <a href="{% url 'login' %}" class="btn btn-success">Login</a>
+        {% endif %}
+      {% endif %}
+    </div>
+
     {% block content %}
     {% endblock %}
   </div>

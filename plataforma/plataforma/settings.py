@@ -40,8 +40,8 @@ INSTALLED_APPS = [
 
     'datasets',             # <-- seu app personalizado
     'rest_framework',       # <-- se for usar Django REST Framework
-
-    'drf_yasg',  # Adicione esta linha
+    'drf_yasg',
+    'rest_framework.authtoken'
 
 ]
 
@@ -133,3 +133,18 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ]
+}
+
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
+
+
