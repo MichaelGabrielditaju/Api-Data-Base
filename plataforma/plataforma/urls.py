@@ -21,7 +21,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('datasets.urls')),  # suas rotas da API
+    path('api/', include('datasets.urls')), 
     path('', views.listar_datasets, name='listar_datasets'),
     path('upload/<int:dataset_id>/', views.upload_arquivo, name='upload_arquivo'),
     path('exportar-csv/<int:dataset_id>/', views.exportar_csv_view, name='exportar_csv_view'),

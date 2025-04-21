@@ -123,10 +123,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Para desenvolvimento, adicione a configuração do diretório de arquivos estáticos
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# Para produção, defina a pasta onde os arquivos estáticos serão coletados
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type

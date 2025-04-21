@@ -278,7 +278,7 @@ def exportar_json_view(request, dataset_id):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')  # ou para onde quiser redirecionar depois do logout
+    return redirect('login')  
 
 def cadastro_view(request):
     if request.method == 'POST':

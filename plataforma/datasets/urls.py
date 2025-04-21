@@ -27,7 +27,7 @@ urlpatterns = [
     path('<int:dataset_id>/exportar-csv/', exportar_csv_view, name='exportar_csv'),
     path('<int:dataset_id>/exportar-json/', exportar_json_view, name='exportar_json'),
 
-    path('criar/', views.criar_dataset, name='criar_dataset'),  # Nova URL para criar dataset
+    path('criar/', views.criar_dataset, name='criar_dataset'), 
     path('', include(router.urls)),
 
     path('<int:pk>/dados/', views.ver_dados, name='ver_dados'),
